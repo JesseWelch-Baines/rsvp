@@ -1,0 +1,6 @@
+<%= render partial: "layouts/title_panel", locals: { title: "New Guest Group" } %>
+
+<div class="p-6 my-5 bg-white rounded-sm">
+  <p class="text-lg">New</p>
+  <%= render partial: "form", locals: { guest_group: @guest_group, ungrouped_guests: @ungrouped_guests } %>
+</div>

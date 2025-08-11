@@ -2,11 +2,11 @@
 
   <% if @links[:show_path].present? %>
     <%= link_to @links[:show_path], class: "w-full p-3" do %>
-      <p><%= @item.name.presence || @item.description.to_plain_text.truncate(75, separator: " ") %></p>
+      <p><%= @item.respond_to?(:name) ? @item.name : @name %></p>
     <% end %>
   <% else %>
     <div class="p-3 w-full">
-      <p><%= @item.name.presence || @item.description.to_plain_text.truncate(75, separator: " ") %></p>
+      <p><%= @item.respond_to?(:name) ? @item.name : @name %></p>
     </div>
   <% end %>
 

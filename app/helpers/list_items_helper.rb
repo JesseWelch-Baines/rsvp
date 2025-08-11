@@ -6,6 +6,11 @@ module ListItemsHelper
         show_path: guest_path(item),
         edit_path: edit_guest_path(item),
       }
+    when "GuestGroup"
+      {
+        show_path: guest_group_path(item),
+        edit_path: edit_guest_group_path(item),
+      }
     else
       {}
     end

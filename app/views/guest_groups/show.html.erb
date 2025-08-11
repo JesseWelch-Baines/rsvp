@@ -1,0 +1,13 @@
+<div class="p-6 my-5 bg-white rounded-sm">
+  <p class="text-lg"><p>
+  <div class="px-6 my-5">
+    <div class="pb-5">
+      <p class="font-semibold">Guests</p>
+      <p><%= @guest_group.guest_names %></p>
+    </div>
+  </div>
+</div>
+
+<div class="pt-5">
+  <%= link_to "Edit guest group", edit_guest_group_path(@guest_group), class: "button" %>
+</div>

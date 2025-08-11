@@ -1,0 +1,11 @@
+<%= simple_form_for guest_group, html: {class: "px-6 my-5"} do |f| %>
+  <%= render partial: "guest_groups/guest_groupings_form", locals: { f: f, guest_group: guest_group, ungrouped_guests: ungrouped_guests } %>
+  <%= f.input :passphrase %>
+
+  <div class="flex flex-row justify-between">
+    <%= f.submit class: "button" %>
+    <% if guest_group.persisted? %>
+      <%= link_to "Delete", guest_group_path(guest_group), class: "text-red-500", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+    <% end %>
+  </div>
+<% end %>

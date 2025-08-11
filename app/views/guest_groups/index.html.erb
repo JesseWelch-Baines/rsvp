@@ -1,0 +1,19 @@
+<div class="pb-5">
+  <%= render partial: "layouts/title_panel", locals: { title: "Guest groups" } %>
+</div>
+
+<% if @guest_groups.any? %>
+  <div class="flex flex-row justify-center">
+    <div class="p-2 w-1/2 bg-gray-300 rounded-sm">
+      <% @guest_groups.each do |guest_group| %>
+        <%= render ListItemComponent.new(item: guest_group, index: 0, count: @guest_groups.size, links: item_list_links(guest_group), name: guest_group.guest_names) %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<div class="flex flex-row justify-center">
+  <div class="pt-5 w-1/2">
+    <%= link_to "New guest group", new_guest_group_path, class: "button" %>
+  </div>
+</div>
