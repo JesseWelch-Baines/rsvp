@@ -1,0 +1,41 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ruby-rails-postgres
+{
+	"name": "Ruby on Rails & Postgres",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"features": {
+		"ghcr.io/itsmechlark/features/postgresql:1": {}
+	},
+	"forwardPorts": [
+		5432,
+		1080
+	],
+	"portsAttributes": {
+		"5432": {
+			"label": "PostgreSQL"
+		},
+		"1080": {
+			"label": "Mailcatcher"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"Shopify.ruby-lsp",
+			],
+			"settings": {
+				"[ruby]": {
+					"editor.defaultFormatter": "Shopify.ruby-lsp",
+					"editor.formatOnSave": true,
+					"editor.formatOnType": true,
+					"editor.semanticHighlighting.enabled": true
+				},
+			},
+		},
+	},
+	"postCreateCommand": "bundle install",
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
