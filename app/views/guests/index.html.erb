@@ -1,0 +1,19 @@
+<div class="pb-5">
+  <%= render partial: "layouts/title_panel", locals: { title: "Guests" } %>
+</div>
+
+<% if @guests.any? %>
+  <div class="flex flex-row justify-center">
+    <div class="p-2 w-1/2 bg-gray-300 rounded-sm">
+      <% @guests.each do |guest| %>
+        <%= render ListItemComponent.new(item: guest, index: 0, count: @guests.size, links: item_list_links(guest)) %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<div class="flex flex-row justify-center">
+  <div class="pt-5 w-1/2">
+    <%= link_to "New guest", new_guest_path, class: "button" %>
+  </div>
+</div>

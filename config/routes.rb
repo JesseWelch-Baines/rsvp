@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: 'application#main'
 
   devise_for :users
+
+  resources :guests, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get 'up' => 'rails/health#show', as: :rails_health_check
@@ -10,17 +13,4 @@ Rails.application.routes.draw do
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-
-  resources :worlds
-  resources :documents
-  resources :article_categories do
-    resources :articles
-    scope module: "article_categories" do
-      resources :article_fields, only: [:new, :create]
-    end
-  end
-
-  resources :mentions, only: [:index]
-
-  post '/set_current_world', to: 'application#set_current_world', as: :set_current_world
 end

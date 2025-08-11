@@ -1,0 +1,11 @@
+<%= simple_form_for guest, html: {class: "px-6 my-5"} do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+
+  <div class="flex flex-row justify-between">
+    <%= f.submit class: "button" %>
+    <% if guest.persisted? %>
+      <%= link_to "Delete", guest_path(guest), class: "text-red-500", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+    <% end %>
+  </div>
+<% end %>
