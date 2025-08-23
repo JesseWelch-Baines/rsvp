@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
 
   before_action :authenticate_any!
-  before_action :set_current_user
+  before_action :set_current_attributes
 
   protected
 
@@ -32,7 +32,8 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def set_current_user
+  def set_current_attributes
     Current.user = current_user if current_user.present?
+    Current.guest_group = current_guest_group if current_guest_group.present?
   end
 end
