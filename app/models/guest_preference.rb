@@ -4,6 +4,7 @@ class GuestPreference < ApplicationRecord
   enum :pref_type, {
     attendance: "Attendance",
     dietary: "Dietary",
-    playlist_request: "Playlist Request"
+    playlist_request: "Playlist Request",
+    message: "Message"
   }
 end

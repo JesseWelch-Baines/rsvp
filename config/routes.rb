@@ -13,6 +13,11 @@ Rails.application.routes.draw do
     end
   end
 
+  # Guest Group authentication
+  get '/guest/:guest_group_id', to: 'guest_groups/sessions#new', as: 'guest_group_auth'
+  post '/guest/:guest_group_id', to: 'guest_groups/sessions#create'
+  delete '/guest/sign_out', to: 'guest_groups/sessions#destroy', as: 'destroy_guest_group_session'
+
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get 'up' => 'rails/health#show', as: :rails_health_check

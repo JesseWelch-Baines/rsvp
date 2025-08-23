@@ -273,14 +273,19 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  # ==> Warden configuration
-  # If you want to use other strategies, that are not supported by Devise, or
-  # change the failure app, you can configure them inside the config.warden block.
-  #
-  # config.warden do |manager|
-  #   manager.intercept_401 = false
-  #   manager.default_strategies(scope: :user).unshift :some_external_strategy
-  # end
+  # Configure multiple scopes
+  config.scoped_views = true  # Optional: if you want separate views
+  
+  config.warden do |manager|
+    # Register the custom strategy for guest groups
+    manager.strategies.add(:guest_group_authenticatable, Warden::Strategies::GuestGroupAuthenticatable)
+    
+    # Set strategies for user scope (admin login)
+    manager.default_strategies(scope: :user).replace([:database_authenticatable])
+    
+    # Set strategies for guest_group scope
+    manager.default_strategies(scope: :guest_group).replace([:guest_group_authenticatable])
+  end
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine

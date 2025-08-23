@@ -12,6 +12,10 @@ class GuestGroup < ApplicationRecord
     guests.any? ? guests.pluck(:first_name).join(", ") : "No guests"
   end
 
+  def authenticate_passphrase(given_passphrase)
+    passphrase == given_passphrase
+  end
+
   private
 
   def set_default_passphrase
