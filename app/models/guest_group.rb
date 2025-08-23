@@ -6,7 +6,7 @@ class GuestGroup < ApplicationRecord
 
   accepts_nested_attributes_for :guest_groupings, allow_destroy: true
 
-  after_initialize :set_default_passphrase
+  after_initialize :set_default_passphrase, if: :new_record?
 
   def guest_names
     guests.any? ? guests.pluck(:first_name).join(", ") : "No guests"
