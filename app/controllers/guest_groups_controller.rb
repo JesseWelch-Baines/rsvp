@@ -18,7 +18,7 @@ class GuestGroupsController < ApplicationController
     if @guest_group.save
       redirect_to guest_groups_path, notice: 'Guest group was successfully created.'
     else
-      render :new
+      redirect_to new_guest_group_path, notice: 'Failed to create guest group.'
     end
   end
 
@@ -34,7 +34,7 @@ class GuestGroupsController < ApplicationController
     if @guest_group.update(guest_group_params)
       redirect_to guest_groups_path, notice: 'Guest group was successfully updated.'
     else
-      render :edit
+      redirect_to edit_guest_group_path(@guest_group), notice: 'Failed to update guest group.'
     end
   end
 

@@ -16,7 +16,7 @@ class GuestsController < ApplicationController
     if @guest.save
       redirect_to guests_path, notice: 'Guest was successfully created.'
     else
-      render :new
+      redirect_to new_guest_path, notice: 'Failed to create guest.'
     end
   end
 
@@ -29,7 +29,7 @@ class GuestsController < ApplicationController
     if @guest.update(guest_params)
       redirect_to guests_path, notice: 'Guest was successfully updated.'
     else
-      render :edit
+      redirect_to edit_guest_path(@guest), notice: 'Failed to update guest.'
     end
   end
 

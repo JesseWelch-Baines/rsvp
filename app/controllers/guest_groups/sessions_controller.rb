@@ -9,8 +9,7 @@ class GuestGroups::SessionsController < ApplicationController
       sign_in(:guest_group, @guest_group)
       redirect_to after_guest_group_sign_in_path(@guest_group)
     else
-      flash.now[:alert] = 'Invalid passphrase'
-      render :new
+      redirect_to guest_group_auth_path(@guest_group), notice: 'Invalid passphrase'
     end
   end
 
