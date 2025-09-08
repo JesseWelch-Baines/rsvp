@@ -65,7 +65,7 @@ group :development, :test do
   gem "rspec-rails", "~> 8.0.0"
 
   # Use FactoryBot for test data generation [https://github.com/thoughtbot/factory_bot_rails]
-  gem "factory_bot_rails", "~> 6.4"
+  gem "factory_bot_rails", "~> 6.5"
 end
 
 group :development do
